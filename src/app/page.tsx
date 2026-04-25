@@ -15,13 +15,11 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Base gradient */}
       <div
         key={theme}
         className={`absolute inset-0 transition-all duration-700 ${currentTheme.home.background}`}
       />
 
-      {/* Animated blur blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {currentTheme.home.blobs.map((blob, i) => (
           <div
@@ -31,7 +29,6 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-white">
         <Header />
         <main className="max-h-48 grid grid-cols-3 gap-6 max-w-7xl mx-auto p-10">
