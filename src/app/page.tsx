@@ -15,39 +15,49 @@ export default function Home() {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
+      {/* Base gradient */}
       <div
         key={theme}
-        className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${currentTheme.home.background} `}
-      >
-        <div className="relative z-10 text-white">
-          <Header />
-          <main className="max-h-48 grid grid-cols-3 gap-6 max-w-7xl mx-auto p-10">
-            <MessageForm
-              theme={theme}
-              subject={subject}
-              setSubject={setSubject}
-              message={message}
-              setMessage={setMessage}
-              setIsAnonymous={setIsAnonymous}
-              isAnonymous={isAnonymous}
-              email={email}
-              setEmail={setEmail}
-              name={name}
-              setName={setName}
-            />
+        className={`absolute inset-0 transition-all duration-700 ${currentTheme.home.background}`}
+      />
 
-            <Preview 
-              message={message} 
-              theme={theme} 
-              subject={subject}
-              isAnonymous={isAnonymous}
-              email={email}
-              name={name}
-            />
+      {/* Animated blur blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {currentTheme.home.blobs.map((blob, i) => (
+          <div
+            key={i}
+            className={`blob-${i + 1} absolute rounded-full blur-3xl opacity-40 ${blob.color} ${blob.size} ${blob.position}`}
+          />
+        ))}
+      </div>
 
-            <Themes theme={theme} setTheme={setTheme} />
-          </main>
-        </div>
+      {/* Content */}
+      <div className="relative z-10 text-white">
+        <Header />
+        <main className="max-h-48 grid grid-cols-3 gap-6 max-w-7xl mx-auto p-10">
+          <MessageForm
+            theme={theme}
+            subject={subject}
+            setSubject={setSubject}
+            message={message}
+            setMessage={setMessage}
+            setIsAnonymous={setIsAnonymous}
+            isAnonymous={isAnonymous}
+            email={email}
+            setEmail={setEmail}
+            name={name}
+            setName={setName}
+          />
+          <Preview
+            message={message}
+            theme={theme}
+            subject={subject}
+            isAnonymous={isAnonymous}
+            email={email}
+            name={name}
+          />
+          <Themes theme={theme} setTheme={setTheme} />
+        </main>
       </div>
     </div>
   );

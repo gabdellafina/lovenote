@@ -6,7 +6,12 @@ export const themes = {
     desc: "beachy, oceanic and fresh",
 
     home: {
-      background: "bg-gradient-to-br from-sky-100 via-blue-200/80 to-indigo-300",
+      background: "bg-gradient-to-br from-cyan-300 via-sky-400 to-indigo-500",
+      blobs: [
+        { color: "bg-sky-200",   size: "w-96 h-96",  position: "top-[-5rem] left-[-4rem]" },
+        { color: "bg-indigo-300", size: "w-80 h-80", position: "bottom-10 right-[-3rem]" },
+        { color: "bg-cyan-100",  size: "w-64 h-64",  position: "top-1/2 left-1/2" },
+      ],
     },
 
     ui: {
@@ -49,7 +54,12 @@ export const themes = {
     desc: "soft and delicate",
 
     home: {
-      background: "bg-gradient-to-br from-pink-100 via-rose-200/80 to-fuchsia-300",
+      background: "bg-gradient-to-br from-rose-300 via-pink-400 to-fuchsia-500",
+      blobs: [
+        { color: "bg-rose-200",    size: "w-96 h-96",  position: "top-[-4rem] right-[-3rem]" },
+        { color: "bg-fuchsia-200", size: "w-72 h-72",  position: "bottom-0 left-[-2rem]" },
+        { color: "bg-pink-100",    size: "w-64 h-64",  position: "top-1/3 left-1/3" },
+      ],
     },
 
     ui: {
@@ -92,7 +102,12 @@ export const themes = {
     desc: "dark and moody",
 
     home: {
-      background: "bg-gradient-to-br from-zinc-900 via-purple-900/80 to-black",
+      background: "bg-gradient-to-br from-zinc-900 via-purple-950 to-black",
+      blobs: [
+        { color: "bg-purple-800", size: "w-96 h-96",  position: "top-[-3rem] left-[-3rem]" },
+        { color: "bg-violet-900", size: "w-80 h-80",  position: "bottom-[-2rem] right-[-2rem]" },
+        { color: "bg-purple-950", size: "w-64 h-64",  position: "top-1/2 right-1/3" },
+      ],
     },
 
     ui: {
@@ -114,7 +129,7 @@ export const themes = {
       border: "border-gray-700",
       accent: "bg-gray-800",
       header: "bg-black text-white",
-      textPrimary: "text-gray-100", 
+      textPrimary: "text-gray-100",
       textSecondary: "text-gray-300",
       divider: "border-gray-700",
       footer: "text-gray-500",

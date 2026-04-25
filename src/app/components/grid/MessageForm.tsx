@@ -5,7 +5,21 @@ import { themes } from "@/lib/themes";
 import Toggle from "../ui/Toggle";
 import { useState } from "react";
 
-const MessageForm = ({message,setMessage,theme,subject,setSubject,setIsAnonymous,isAnonymous,email,setEmail,name,setName,}) => {
+interface MessageFormProps {
+  message: string;
+  setMessage: (value: string) => void;
+  theme: string;
+  subject: string;
+  setSubject: (value: string) => void;
+  setIsAnonymous: (value: boolean) => void;
+  isAnonymous: boolean;
+  email: string;
+  setEmail: (value: string) => void;
+  name: string;
+  setName: (value: string) => void;
+}
+
+const MessageForm = ({message,setMessage,theme,subject,setSubject,setIsAnonymous,isAnonymous,email,setEmail,name,setName,}: MessageFormProps) => {
 
   const handleSend = async () => {
     try {
