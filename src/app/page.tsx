@@ -2,12 +2,12 @@
 import Header from "@/app/components/Header";
 import { MessageForm, Preview, Themes } from "./components/grid";
 import { useState } from "react";
-import { themes } from "@/lib/themes";
+import { themes, ThemeKey } from "@/lib/themes";
 
 export default function Home() {
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
-  const [theme, setTheme] = useState("blue");
+  const [theme, setTheme] = useState<ThemeKey>("blue");
   const currentTheme = themes[theme];
   const [isAnonymous, setIsAnonymous] = useState(false);
   const [email, setEmail] = useState("");

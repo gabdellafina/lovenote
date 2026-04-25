@@ -1,3 +1,5 @@
+export type ThemeKey = keyof typeof themes;
+
 export const themes = {
   blue: {
     id: "blue",
@@ -143,3 +145,5 @@ export const themes = {
     }
   }
 };
+
+export type ThemeKey = keyof typeof themes;

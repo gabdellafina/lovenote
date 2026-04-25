@@ -1,14 +1,21 @@
 'use client';
 
 import { Card } from "../ui/Card";
-import { themes } from "@/lib/themes";
+import { themes, ThemeKey } from "@/lib/themes";
 
-const Preview = ({ message, theme, subject, isAnonymous, email, name }) => {
+interface PreviewProps {
+  message: string;
+  theme: ThemeKey;
+  subject: string;
+  isAnonymous: boolean;
+  email: string;
+  name: string;
+}
+
+const Preview = ({ message, theme, subject, isAnonymous, email, name }: PreviewProps) => {
   const currentTheme = themes[theme];
   const isGoth = theme === "goth";
-
   const bgColor = isGoth ? "bg-gray-800" : "bg-white";
-
   const emojis = currentTheme.preview.emojiSet;
 
   return (
@@ -18,15 +25,10 @@ const Preview = ({ message, theme, subject, isAnonymous, email, name }) => {
       </h2>
 
       <div className="bg-gray-200 rounded-xl overflow-hidden shadow-inner">
-
         <div className="text-sm text-gray-600 px-6 pt-4 pb-2">
-          <p>
-            From: LoveNote lovenote@gmail.com
-          </p>
-          <p>To: { email || "destino@exemplo.com" }</p>
-          <p>
-            Assunto: {currentTheme.emoji} {subject || "i miss you"}
-          </p>
+          <p>From: LoveNote lovenote@gmail.com</p>
+          <p>To: {email || "destino@exemplo.com"}</p>
+          <p>Assunto: {currentTheme.emoji} {subject || "i miss you"}</p>
         </div>
 
         <div className={`text-center py-3 font-serif text-lg ${currentTheme.preview.header}`}>
@@ -34,41 +36,29 @@ const Preview = ({ message, theme, subject, isAnonymous, email, name }) => {
         </div>
 
         <div className="px-6 py-6 text-center">
-
           <p className="text-xl mb-2">
             {emojis[0]} {emojis[1]} {emojis[2]}
           </p>
 
-          <div className={`rounded-2xl p-6 max-w-md mx-auto border ${currentTheme.preview.border}  ${bgColor}`}>
-
+          <div className={`rounded-2xl p-6 max-w-md mx-auto border ${currentTheme.preview.border} ${bgColor}`}>
             <h4 className={`font-serif text-xl italic mb-3 ${currentTheme.preview.textPrimary}`}>
               {currentTheme.emoji} {subject || "i miss you"}
             </h4>
-
             <hr className={`mb-4 ${currentTheme.preview.divider}`} />
-
             <p className={`text-sm whitespace-pre-line mb-4 ${currentTheme.preview.textSecondary}`}>
               {message || "write your message..."}
             </p>
-
             <hr className={`mb-4 ${currentTheme.preview.divider}`} />
-            <p className={`text-sm italic ${currentTheme.preview.textSecondary}`}>
-              With love,
-            </p>
-
+            <p className={`text-sm italic ${currentTheme.preview.textSecondary}`}>With love,</p>
             <p className={`font-semibold ${currentTheme.preview.textPrimary}`}>
               {isAnonymous ? "Anonymous 💌" : name || "your name"}
             </p>
-
-            <p className="mt-2 text-xl">
-              {emojis[0]}
-            </p>
+            <p className="mt-2 text-xl">{emojis[0]}</p>
           </div>
 
           <p className={`text-xs mt-4 ${currentTheme.preview.footer}`}>
             sent with love from LoveNote
           </p>
-
         </div>
       </div>
     </Card>
