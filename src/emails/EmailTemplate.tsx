@@ -8,7 +8,15 @@ import {
   Hr,
 } from "@react-email/components";
 
-import { themes } from "@/lib/themes";
+import { themes, ThemeKey } from "@/lib/themes";
+
+interface EmailTemplateProps {
+  message: string;
+  subject: string;
+  theme: ThemeKey;
+  name: string;
+  isAnonymous: boolean;
+}
 
 export default function EmailTemplate({
   message,
@@ -16,9 +24,8 @@ export default function EmailTemplate({
   theme,
   name,
   isAnonymous,
-}) {
+}: EmailTemplateProps) {
   const currentTheme = themes[theme] || themes.blue;
-
   const emojis = currentTheme.preview.emojiSet;
 
   return (
@@ -39,17 +46,12 @@ export default function EmailTemplate({
             overflow: "hidden",
           }}
         >
-
-          {/* HEADER INFO */}
           <Section style={{ padding: "16px", fontSize: "12px", color: "#6b7280" }}>
             <Text>From: LoveNote</Text>
             <Text>To: you</Text>
-            <Text>
-              Subject: {currentTheme.emoji} {subject || "i miss you"}
-            </Text>
+            <Text>Subject: {currentTheme.emoji} {subject || "i miss you"}</Text>
           </Section>
 
-          {/* TOP BAR */}
           <Section
             style={{
               backgroundColor: currentTheme.email.accent,
@@ -63,30 +65,24 @@ export default function EmailTemplate({
             💌 LoveNote
           </Section>
 
-          {/* CONTENT */}
           <Section style={{ padding: "24px", textAlign: "center" }}>
-            
             <Text style={{ fontSize: "18px", marginBottom: "12px" }}>
               {emojis[0]} {emojis[1]} {emojis[2]}
             </Text>
 
-            {/* CARD */}
             <Section
               style={{
-                border: `1px solid #e5e7eb`,
+                border: "1px solid #e5e7eb",
                 borderRadius: "16px",
                 padding: "20px",
-                backgroundColor:
-                  theme === "goth" ? "#1f2937" : "#ffffff",
+                backgroundColor: theme === "goth" ? "#1f2937" : "#ffffff",
               }}
             >
-
               <Heading
                 style={{
                   fontSize: "20px",
                   fontStyle: "italic",
-                  color:
-                    theme === "goth" ? "#f9fafb" : "#1f2937",
+                  color: theme === "goth" ? "#f9fafb" : "#1f2937",
                 }}
               >
                 {currentTheme.emoji} {subject || "i miss you"}
@@ -97,8 +93,7 @@ export default function EmailTemplate({
               <Text
                 style={{
                   fontSize: "14px",
-                  color:
-                    theme === "goth" ? "#d1d5db" : "#4b5563",
+                  color: theme === "goth" ? "#d1d5db" : "#4b5563",
                   whiteSpace: "pre-line",
                 }}
               >
@@ -111,8 +106,7 @@ export default function EmailTemplate({
                 style={{
                   fontStyle: "italic",
                   fontSize: "13px",
-                  color:
-                    theme === "goth" ? "#9ca3af" : "#6b7280",
+                  color: theme === "goth" ? "#9ca3af" : "#6b7280",
                 }}
               >
                 With love,
@@ -121,8 +115,7 @@ export default function EmailTemplate({
               <Text
                 style={{
                   fontWeight: "bold",
-                  color:
-                    theme === "goth" ? "#f3f4f6" : "#111827",
+                  color: theme === "goth" ? "#f3f4f6" : "#111827",
                 }}
               >
                 {isAnonymous ? "Anonymous 💌" : name || "your name"}
@@ -131,21 +124,17 @@ export default function EmailTemplate({
               <Text style={{ fontSize: "18px", marginTop: "10px" }}>
                 {emojis[0]}
               </Text>
-
             </Section>
 
-            {/* FOOTER */}
             <Text
               style={{
                 fontSize: "12px",
                 marginTop: "20px",
-                color:
-                  theme === "goth" ? "#6b7280" : "#9ca3af",
+                color: theme === "goth" ? "#6b7280" : "#9ca3af",
               }}
             >
               sent with love from LoveNote
             </Text>
-
           </Section>
         </Container>
       </Body>

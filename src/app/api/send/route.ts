@@ -2,18 +2,26 @@ import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { render } from "@react-email/render";
 import EmailTemplate from "@/emails/EmailTemplate";
+import { ThemeKey } from "@/lib/themes";
 
 const transporter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: process.env.GMAIL_USER,  
-    pass: process.env.GMAIL_APP_PASS,  
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASS,
   },
 });
 
 export async function POST(req: Request) {
   try {
-    const { to, subject, message, theme, name, isAnonymous } = await req.json();
+    const { to, subject, message, theme, name, isAnonymous }: {
+      to: string;
+      subject: string;
+      message: string;
+      theme: ThemeKey;
+      name: string;
+      isAnonymous: boolean;
+    } = await req.json();
 
     const html = await render(
       EmailTemplate({ message, subject, theme, name, isAnonymous })

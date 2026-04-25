@@ -1,4 +1,9 @@
-const Toggle = ({ enabled, setEnabled }) => {
+interface ToggleProps {
+  enabled: boolean;
+  setEnabled: (value: boolean) => void;
+}
+
+const Toggle = ({ enabled, setEnabled }: ToggleProps) => {
   return (
     <button
       onClick={() => setEnabled(!enabled)}

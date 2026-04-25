@@ -1,5 +1,5 @@
-import { themes } from "@/lib/themes";
+import { themes, ThemeKey } from "@/lib/themes";
 
-export const useTheme = (themeId: string) => {
+export const useTheme = (themeId: ThemeKey) => {
   return themes[themeId];
 };
