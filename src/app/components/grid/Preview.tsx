@@ -3,7 +3,7 @@
 import { Card } from "../ui/Card";
 import { themes } from "@/lib/themes";
 
-const Preview = ({ message, theme, subject }) => {
+const Preview = ({ message, theme, subject, isAnonymous, email, name }) => {
   const currentTheme = themes[theme];
   const isGoth = theme === "goth";
 
@@ -20,8 +20,10 @@ const Preview = ({ message, theme, subject }) => {
       <div className="bg-gray-200 rounded-xl overflow-hidden shadow-inner">
 
         <div className="text-sm text-gray-600 px-6 pt-4 pb-2">
-          <p>De: remetente@exemplo.com</p>
-          <p>Para: destinatario@email.com</p>
+          <p>
+            From: LoveNote lovenote@gmail.com
+          </p>
+          <p>To: { email || "destino@exemplo.com" }</p>
           <p>
             Assunto: {currentTheme.emoji} {subject || "i miss you"}
           </p>
@@ -55,7 +57,7 @@ const Preview = ({ message, theme, subject }) => {
             </p>
 
             <p className={`font-semibold ${currentTheme.preview.textPrimary}`}>
-              your name
+              {isAnonymous ? "Anonymous 💌" : name || "your name"}
             </p>
 
             <p className="mt-2 text-xl">

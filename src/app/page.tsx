@@ -9,6 +9,9 @@ export default function Home() {
   const [message, setMessage] = useState("");
   const [theme, setTheme] = useState("blue");
   const currentTheme = themes[theme];
+  const [isAnonymous, setIsAnonymous] = useState(false);
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -25,9 +28,22 @@ export default function Home() {
               setSubject={setSubject}
               message={message}
               setMessage={setMessage}
+              setIsAnonymous={setIsAnonymous}
+              isAnonymous={isAnonymous}
+              email={email}
+              setEmail={setEmail}
+              name={name}
+              setName={setName}
             />
 
-            <Preview message={message} theme={theme} subject={subject} />
+            <Preview 
+              message={message} 
+              theme={theme} 
+              subject={subject}
+              isAnonymous={isAnonymous}
+              email={email}
+              name={name}
+            />
 
             <Themes theme={theme} setTheme={setTheme} />
           </main>
